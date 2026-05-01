@@ -6,6 +6,7 @@ import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import gohoubiStampIcon from "../content/projects/gohoubistamp/icon.png";
 
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -18,33 +19,225 @@ const projects: CollectionEntry<"projects">[] = (
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+const featuredProject = projects[0];
+const featuredHighlights = featuredProject?.data.highlights || [
+  "日常の中で続けやすい体験設計",
+  "迷わず使えるシンプルなUI",
+  "プライバシーに配慮したアプリ方針",
+];
+
+const principles = [
+  {
+    title: "信頼できる設計",
+    body: "利用者の生活に入るアプリだからこそ、分かりやすさ、安心感、不要なデータを持たない方針を大切にしています。",
+  },
+  {
+    title: "小さく磨く開発",
+    body: "機能を増やす前に、何度も触る導線と画面の読みやすさを整え、毎日使える軽さを優先します。",
+  },
+  {
+    title: "公開後も育てる姿勢",
+    body: "ユーザーの声を拾い、使われる場面を観察しながら、実用性の高い改善を積み重ねます。",
+  },
+];
+
+const metrics = [
+  ["Focus", "家庭向けアプリ"],
+  ["Platform", featuredProject?.data.platform || "iOS"],
+  ["Status", featuredProject?.data.status || "準備中"],
+];
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
-  <Container>
-    <aside data-pagefind-ignore>
-      <h1 class="font-semibold text-black dark:text-white">
-        kand417 の Website へようこそ！
-      </h1>
-      <div class="space-y-16">
-        <section>
-          <article class="space-y-4">
-            <span class="animate">
-              <p>
-                kand417です。このWebサイトでは個人開発したアプリの紹介などをしていきます。
-              </p>
-            </span>
-          </article>
-        </section>
-
-        <section class="animate space-y-6">
-          <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="font-semibold text-black dark:text-white">
-              Latest posts
-            </h2>
-            <Link href="/blog"> See all posts </Link>
+  <section class="pt-4 pb-20">
+    <Container>
+      <div class="grid gap-12 lg:grid-cols-[1fr_0.92fr] lg:items-center">
+        <div class="animate max-w-3xl">
+          <p
+            class="mb-5 text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+          >
+            kand417 / Independent App Developer
+          </p>
+          <h1
+            class="max-w-3xl text-4xl leading-[1.08] font-semibold text-[#17211d] sm:text-5xl lg:text-6xl dark:text-white"
+          >
+            日常に寄り添うアプリを、丁寧に設計して届けます。
+          </h1>
+          <p
+            class="mt-7 max-w-2xl text-base leading-8 text-[#17211d]/68 sm:text-lg dark:text-white/68"
+          >
+            子育てや習慣づけなど、身近な課題を扱う個人開発アプリを制作しています。使う人の負担を増やさず、自然に続けられる体験を目指しています。
+          </p>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a
+              href="/projects"
+              class="rounded-md bg-[#17211d] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#1d6f5c] focus-visible:bg-[#1d6f5c] dark:bg-white dark:text-[#101412] dark:hover:bg-[#69c4ad] dark:focus-visible:bg-[#69c4ad]"
+            >
+              アプリを見る
+            </a>
+            <a
+              href="/contact"
+              class="rounded-md border border-[#17211d]/12 bg-white px-5 py-3 text-sm font-medium text-[#17211d] transition-colors hover:border-[#1d6f5c]/35 hover:text-[#1d6f5c] focus-visible:border-[#1d6f5c]/35 focus-visible:text-[#1d6f5c] dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:text-[#69c4ad] dark:focus-visible:text-[#69c4ad]"
+            >
+              お問い合わせ
+            </a>
           </div>
-          <ul class="not-prose flex flex-col gap-4">
+          <dl
+            class="mt-12 grid gap-4 border-y border-[#17211d]/10 py-6 sm:grid-cols-3 dark:border-white/10"
+          >
+            {
+              metrics.map(([label, value]) => (
+                <div>
+                  <dt class="text-xs font-medium text-[#17211d]/45 uppercase dark:text-white/45">
+                    {label}
+                  </dt>
+                  <dd class="mt-2 font-semibold text-[#17211d] dark:text-white">
+                    {value}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+
+        {
+          featuredProject && (
+            <a
+              href={`/projects/${featuredProject.id}`}
+              class="animate group block rounded-lg border border-[#17211d]/10 bg-white p-6 shadow-xl shadow-[#17211d]/10 transition-all duration-300 hover:-translate-y-1 hover:border-[#1d6f5c]/35 focus-visible:-translate-y-1 focus-visible:border-[#1d6f5c]/35 dark:border-white/10 dark:bg-white/5 dark:shadow-black/20"
+            >
+              <div class="flex items-start justify-between gap-5">
+                <div>
+                  <p class="text-sm font-medium text-[#1d6f5c] dark:text-[#69c4ad]">
+                    Featured Application
+                  </p>
+                  <h2 class="mt-3 text-3xl font-semibold text-[#17211d] dark:text-white">
+                    {featuredProject.data.title}
+                  </h2>
+                  <p class="mt-3 leading-8 text-[#17211d]/65 dark:text-white/65">
+                    {featuredProject.data.description}
+                  </p>
+                </div>
+                <img
+                  src={gohoubiStampIcon.src}
+                  width="88"
+                  height="88"
+                  alt="ごほうびスタンプのアプリアイコン"
+                  class="size-20 shrink-0 rounded-[1.4rem] shadow-lg shadow-[#17211d]/10 sm:size-24"
+                />
+              </div>
+              <div class="mt-8 divide-y divide-[#17211d]/10 dark:divide-white/10">
+                {featuredHighlights.map((highlight) => (
+                  <div class="flex gap-4 py-4">
+                    <span
+                      class="mt-2 size-2 shrink-0 rounded-full bg-[#d59b2f]"
+                      aria-hidden="true"
+                    />
+                    <p class="text-sm leading-7 text-[#17211d]/70 dark:text-white/70">
+                      {highlight}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div class="mt-7 flex flex-wrap gap-2">
+                {featuredProject.data.stack?.map((item) => (
+                  <span class="rounded-md border border-[#17211d]/10 px-3 py-1.5 text-xs font-medium text-[#17211d]/65 dark:border-white/10 dark:text-white/65">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </a>
+          )
+        }
+      </div>
+    </Container>
+  </section>
+
+  <section
+    class="border-y border-[#17211d]/10 bg-white/55 py-16 dark:border-white/10 dark:bg-white/[0.03]"
+  >
+    <Container>
+      <div class="grid gap-8 lg:grid-cols-[0.72fr_1fr] lg:items-start">
+        <div class="animate">
+          <p
+            class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+          >
+            Design Principles
+          </p>
+          <h2
+            class="mt-3 text-3xl font-semibold text-[#17211d] dark:text-white"
+          >
+            見た目だけでなく、使われ方まで整える。
+          </h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          {
+            principles.map((principle) => (
+              <section class="animate border-t border-[#17211d]/10 pt-5 dark:border-white/10">
+                <h3 class="font-semibold text-[#17211d] dark:text-white">
+                  {principle.title}
+                </h3>
+                <p class="mt-3 text-sm leading-7 text-[#17211d]/65 dark:text-white/65">
+                  {principle.body}
+                </p>
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20">
+    <Container>
+      <div class="animate mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p
+            class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+          >
+            Applications
+          </p>
+          <h2
+            class="mt-3 text-3xl font-semibold text-[#17211d] dark:text-white"
+          >
+            開発したアプリケーション
+          </h2>
+        </div>
+        <Link href="/projects">すべて見る</Link>
+      </div>
+      <ul class="not-prose grid gap-5 lg:grid-cols-2">
+        {
+          projects.map((project) => (
+            <li class="animate">
+              <ArrowCard entry={project} />
+            </li>
+          ))
+        }
+      </ul>
+    </Container>
+  </section>
+
+  <section class="border-t border-[#17211d]/10 pt-16 dark:border-white/10">
+    <Container>
+      <div class="grid gap-12 lg:grid-cols-[1fr_0.82fr]">
+        <section class="animate">
+          <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p
+                class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+              >
+                Notes
+              </p>
+              <h2
+                class="mt-3 text-3xl font-semibold text-[#17211d] dark:text-white"
+              >
+                開発メモ
+              </h2>
+            </div>
+            <Link href="/blog">記事を見る</Link>
+          </div>
+          <ul class="not-prose grid gap-5">
             {
               blog.map((post) => (
                 <li>
@@ -55,60 +248,45 @@ const projects: CollectionEntry<"projects">[] = (
           </ul>
         </section>
 
-        <section class="animate space-y-6">
-          <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="font-semibold text-black dark:text-white">
-              Recent projects
-            </h2>
-            <Link href="/projects"> See all projects </Link>
-          </div>
-          <ul class="not-prose flex flex-col gap-4">
-            {
-              projects.map((project) => (
-                <li>
-                  <ArrowCard entry={project} />
-                </li>
-              ))
-            }
-          </ul>
-        </section>
-
-        <section class="animate space-y-4">
-          <h2 class="font-semibold text-black dark:text-white">
-            Let's Connect
+        <section
+          class="animate rounded-lg border border-[#17211d]/10 bg-white p-6 dark:border-white/10 dark:bg-white/5"
+          data-pagefind-ignore
+        >
+          <p
+            class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+          >
+            Contact
+          </p>
+          <h2
+            class="mt-3 text-2xl font-semibold text-[#17211d] dark:text-white"
+          >
+            アプリに関するご連絡
           </h2>
-          <article>
-            <p>
-              <!-- If you want to get in touch with me about something or just to say
-              hi, reach out on social media or send me an email. -->
-            </p>
-          </article>
-          <ul class="not-prose flex flex-wrap gap-2">
+          <p class="mt-4 leading-8 text-[#17211d]/65 dark:text-white/65">
+            ご質問、ご要望、フィードバックがあればお問い合わせフォームからお送りください。開発中のアプリ改善の参考にします。
+          </p>
+          <div class="mt-7 flex flex-wrap gap-2">
+            <a
+              href="/contact"
+              class="rounded-md bg-[#17211d] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#1d6f5c] focus-visible:bg-[#1d6f5c] dark:bg-white dark:text-[#101412] dark:hover:bg-[#69c4ad]"
+            >
+              フォームへ
+            </a>
             {
               SOCIALS.map((SOCIAL) => (
-                <li class="flex gap-x-2 text-nowrap">
-                  <Link
-                    href={SOCIAL.HREF}
-                    external
-                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
-                  >
-                    {SOCIAL.NAME}
-                  </Link>
-                  {"/"}
-                </li>
+                <a
+                  href={SOCIAL.HREF}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="rounded-md border border-[#17211d]/10 px-4 py-2.5 text-sm font-medium text-[#17211d]/70 transition-colors hover:border-[#1d6f5c]/35 hover:text-[#17211d] dark:border-white/10 dark:text-white/70 dark:hover:text-white"
+                >
+                  {SOCIAL.NAME}
+                </a>
               ))
             }
-            <li class="line-clamp-1">
-              <Link
-                href={`mailto:${SITE.EMAIL}`}
-                aria-label={`Email ${SITE.TITLE}`}
-              >
-                {SITE.EMAIL}
-              </Link>
-            </li>
-          </ul>
+          </div>
         </section>
       </div>
-    </aside>
-  </Container>
+    </Container>
+  </section>
 </Layout>

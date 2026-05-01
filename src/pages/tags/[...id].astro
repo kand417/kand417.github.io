@@ -31,13 +31,26 @@ const sortedPosts = posts.sort(
 
 <Layout title={`Tag: ${id}`} description={`Posts with the tag: ${id}`}>
   <Container>
-    <div class="space-y-10" data-pagefind-ignore>
-      <BackToPrevious href="/tags"> All tags </BackToPrevious>
-      <h1 class="animate font-semibold text-black dark:text-white">
-        Posts tagged with "{id}"
-      </h1>
-      <ul class="animate flex flex-col gap-4">
-        {sortedPosts.map((post) => <ArrowCard entry={post} />)}
+    <div class="max-w-4xl space-y-10" data-pagefind-ignore>
+      <BackToPrevious href="/tags">タグ一覧へ戻る</BackToPrevious>
+      <div class="animate">
+        <p
+          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+        >
+          Tag
+        </p>
+        <h1 class="mt-3 text-4xl font-semibold text-[#17211d] dark:text-white">
+          {id}
+        </h1>
+      </div>
+      <ul class="animate grid gap-5">
+        {
+          sortedPosts.map((post) => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))
+        }
       </ul>
     </div>
   </Container>

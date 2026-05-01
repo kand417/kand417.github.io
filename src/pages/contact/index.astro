@@ -1,19 +1,57 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import { SOCIALS } from "@consts";
 ---
 
-<Layout title="お問い合わせ" description="お問い合わせページです。">
-  <section class="mx-auto max-w-2xl px-4 py-12">
-    <h1 class="mb-6 text-3xl font-bold">お問い合わせ</h1>
-    <p class="mb-4">以下のフォームからお問い合わせください。</p>
+<Layout
+  title="お問い合わせ"
+  description="アプリに関するお問い合わせページです。"
+>
+  <Container>
+    <section class="grid gap-10 lg:grid-cols-[0.72fr_1fr] lg:items-start">
+      <div class="animate">
+        <p
+          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+        >
+          Contact
+        </p>
+        <h1
+          class="mt-3 text-4xl leading-[1.12] font-semibold text-[#17211d] sm:text-5xl dark:text-white"
+        >
+          アプリに関するご連絡はこちらから。
+        </h1>
+        <p
+          class="mt-5 text-base leading-8 text-[#17211d]/65 dark:text-white/65"
+        >
+          ご質問、ご要望、フィードバックをお送りください。いただいた内容は、今後の改善や新しいアプリづくりの参考にします。
+        </p>
+        <div class="mt-8 flex flex-wrap gap-2">
+          {
+            SOCIALS.map((SOCIAL) => (
+              <a
+                href={SOCIAL.HREF}
+                target="_blank"
+                rel="noreferrer"
+                class="rounded-md border border-[#17211d]/10 bg-white px-4 py-2.5 text-sm font-medium text-[#17211d]/70 transition-colors hover:border-[#1d6f5c]/35 hover:text-[#17211d] dark:border-white/10 dark:bg-white/5 dark:text-white/70 dark:hover:text-white"
+              >
+                {SOCIAL.NAME}
+              </a>
+            ))
+          }
+        </div>
+      </div>
 
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLScxM1eGKw6Dz_OhFEZUP656XGJjQQ_FJVm-w0ynveX7OHjldQ/viewform?embedded=true"
-      width="640"
-      height="811"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0">読み込んでいます…</iframe
-    >
-  </section>
+      <div
+        class="animate overflow-hidden rounded-lg border border-[#17211d]/10 bg-white shadow-xl shadow-[#17211d]/10 dark:border-white/10 dark:bg-white/5 dark:shadow-black/20"
+      >
+        <iframe
+          title="お問い合わせフォーム"
+          src="https://docs.google.com/forms/d/e/1FAIpQLScxM1eGKw6Dz_OhFEZUP656XGJjQQ_FJVm-w0ynveX7OHjldQ/viewform?embedded=true"
+          class="h-[760px] w-full bg-white"
+          loading="lazy">読み込んでいます...</iframe
+        >
+      </div>
+    </section>
+  </Container>
 </Layout>

@@ -9,17 +9,26 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort();
 
 <Layout title="Tags" description="List of tags used.">
   <Container>
-    <div class="space-y-10">
-      <h1 class="animate font-semibold">All Tags</h1>
+    <div class="max-w-3xl space-y-10">
+      <div class="animate">
+        <p
+          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+        >
+          Tags
+        </p>
+        <h1 class="mt-3 text-4xl font-semibold text-[#17211d] dark:text-white">
+          All Tags
+        </h1>
+      </div>
       <div class="animate flex flex-wrap gap-2">
         {
           tags.map((tag) => (
             <a
               href={`/tags/${tag}`}
-              class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+              class="rounded-md border border-[#17211d]/10 bg-white px-3 py-1.5 text-sm transition-colors duration-300 ease-in-out hover:border-[#1d6f5c]/35 hover:text-[#1d6f5c] focus-visible:border-[#1d6f5c]/35 focus-visible:text-[#1d6f5c] dark:border-white/10 dark:bg-white/5 dark:hover:text-[#69c4ad] dark:focus-visible:text-[#69c4ad]"
             >
               {tag}{" "}
-              <span class="text-sm text-gray-600">
+              <span class="text-sm text-[#17211d]/45 dark:text-white/45">
                 ({posts.filter((post) => post.data.tags?.includes(tag)).length})
               </span>
             </a>

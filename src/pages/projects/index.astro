@@ -12,21 +12,33 @@ const projects = (await getCollection("projects"))
 
 <Layout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
-    <aside data-pagefind-ignore>
-      <div class="space-y-10">
-        <div class="animate font-semibold text-black dark:text-white">
+    <section data-pagefind-ignore>
+      <div class="animate max-w-3xl">
+        <p
+          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+        >
           Projects
-        </div>
-        <ul class="animate not-prose flex flex-col gap-4">
-          {
-            projects.map((project) => (
-              <li>
-                <ArrowCard entry={project} />
-              </li>
-            ))
-          }
-        </ul>
+        </p>
+        <h1
+          class="mt-3 text-4xl leading-[1.12] font-semibold text-[#17211d] sm:text-5xl dark:text-white"
+        >
+          生活に近い課題を、扱いやすいアプリにする。
+        </h1>
+        <p
+          class="mt-5 text-base leading-8 text-[#17211d]/65 dark:text-white/65"
+        >
+          個人開発したアプリケーションの一覧です。企画、UI設計、実装、公開準備まで、プロダクトとして使われる状態を意識して作っています。
+        </p>
       </div>
-    </aside>
+      <ul class="not-prose mt-12 grid gap-5 lg:grid-cols-2">
+        {
+          projects.map((project) => (
+            <li class="animate">
+              <ArrowCard entry={project} />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
   </Container>
 </Layout>

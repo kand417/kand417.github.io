@@ -53,48 +53,59 @@ const { Content, headings } = await render(post);
 
 <Layout title={post.data.title} description={post.data.description}>
   <Container>
-    <div class="animate">
-      <BackToPrevious href="/blog">Back to blog</BackToPrevious>
-    </div>
-    <div class="my-10 space-y-1">
-      <div class="animate flex items-center gap-1.5">
-        <div class="font-base text-sm">
+    <div class="mx-auto max-w-3xl">
+      <div class="animate">
+        <BackToPrevious href="/blog">Blogへ戻る</BackToPrevious>
+      </div>
+      <div class="my-10">
+        <div
+          class="animate flex flex-wrap items-center gap-2 text-sm text-[#17211d]/55 dark:text-white/55"
+        >
           <FormattedDate date={post.data.date} />
+          {
+            post.body && (
+              <>
+                <span aria-hidden="true">/</span>
+                <span>{readingTime(post.body)}</span>
+              </>
+            )
+          }
         </div>
-        &bull;
-        {post.body && (
-          <div class="font-base text-sm">
-            {readingTime(post.body)}
-          </div>
-        )}        
+        <h1
+          class="animate mt-4 text-4xl leading-[1.12] font-semibold text-[#17211d] sm:text-5xl dark:text-white"
+        >
+          {post.data.title}
+        </h1>
+        <p
+          class="animate mt-5 text-lg leading-8 text-[#17211d]/65 dark:text-white/65"
+        >
+          {post.data.description}
+        </p>
+        {
+          post.data.tags && post.data.tags?.length > 0 ? (
+            <div class="animate mt-6 flex flex-wrap gap-2">
+              {post.data.tags.map((tag) => (
+                <a
+                  href={`/tags/${tag}`}
+                  class="rounded-md border border-[#17211d]/10 bg-white px-3 py-1.5 text-sm transition-colors duration-300 ease-in-out hover:border-[#1d6f5c]/35 hover:text-[#1d6f5c] focus-visible:border-[#1d6f5c]/35 focus-visible:text-[#1d6f5c] dark:border-white/10 dark:bg-white/5 dark:hover:text-[#69c4ad] dark:focus-visible:text-[#69c4ad]"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          ) : null
+        }
       </div>
-      <h1 class="animate text-3xl font-semibold text-black dark:text-white">
-        {post.data.title}
-      </h1>
-      {
-        post.data.tags && post.data.tags?.length > 0 ? (
-          <div class="animate flex gap-2 pt-1">
-            {post.data.tags.map((tag) => (
-              <a
-                href={`/tags/${tag}`}
-                class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
-              >
-                {tag}
-              </a>
-            ))}
-          </div>
-        ) : null
-      }
+      {headings.length > 0 && <TableOfContents headings={headings} />}
+      <article class="animate mt-10">
+        <Content />
+        <div class="mt-24">
+          <PostNavigation prevPost={prevPost} nextPost={nextPost} />
+        </div>
+        <div class="mt-24">
+          <Giscus />
+        </div>
+      </article>
     </div>
-    {headings.length > 0 && <TableOfContents headings={headings} />}
-    <article class="animate">
-      <Content />
-      <div class="mt-24">
-        <PostNavigation prevPost={prevPost} nextPost={nextPost} />
-      </div>
-      <div class="mt-24">
-        <Giscus />
-      </div>
-    </article>
   </Container>
 </Layout>

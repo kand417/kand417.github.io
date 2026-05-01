@@ -1,6 +1,6 @@
 ---
 import Container from "@components/Container.astro";
-import { SITE } from "@consts";
+import { SITE, SOCIALS } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
 ---
 
@@ -11,13 +11,36 @@ import BackToTop from "@components/BackToTop.astro";
         <BackToTop />
       </div>
     </div>
-    <div class="flex items-center justify-between">
-      <div>&copy; {new Date().getFullYear()} • {SITE.TITLE} 🔬</div>
-      <div class="flex flex-wrap items-center gap-1.5">
+    <div
+      class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+    >
+      <div class="space-y-1">
+        <div class="font-medium text-[#17211d] dark:text-white">
+          &copy; {new Date().getFullYear()}
+          {SITE.TITLE}
+        </div>
+        <div class="text-[#17211d]/55 dark:text-white/55">
+          Thoughtful apps for everyday routines.
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        {
+          SOCIALS.map((SOCIAL) => (
+            <a
+              href={SOCIAL.HREF}
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-md border border-[#17211d]/10 px-3 py-2 text-[#17211d]/70 transition-colors hover:border-[#1d6f5c]/35 hover:text-[#17211d] dark:border-white/10 dark:text-white/70 dark:hover:text-white"
+              aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+            >
+              {SOCIAL.NAME}
+            </a>
+          ))
+        }
         <button
           id="light-theme-button"
           aria-label="Light theme"
-          class="group flex size-9 items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
+          class="group flex size-9 items-center justify-center rounded-md border border-[#17211d]/10 hover:bg-[#17211d]/5 focus-visible:bg-[#17211d]/5 dark:border-white/10 dark:hover:bg-white/10 dark:focus-visible:bg-white/10"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +52,7 @@ import BackToTop from "@components/BackToTop.astro";
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-hover:stroke-black group-focus-visible:animate-pulse group-focus-visible:stroke-black dark:group-hover:stroke-white dark:group-focus-visible:stroke-white"
+            class="transition-colors duration-300 ease-in-out group-hover:stroke-[#17211d] group-focus-visible:stroke-[#17211d] dark:group-hover:stroke-white dark:group-focus-visible:stroke-white"
           >
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -45,7 +68,7 @@ import BackToTop from "@components/BackToTop.astro";
         <button
           id="dark-theme-button"
           aria-label="Dark theme"
-          class="group flex size-9 items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
+          class="group flex size-9 items-center justify-center rounded-md border border-[#17211d]/10 hover:bg-[#17211d]/5 focus-visible:bg-[#17211d]/5 dark:border-white/10 dark:hover:bg-white/10 dark:focus-visible:bg-white/10"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +80,7 @@ import BackToTop from "@components/BackToTop.astro";
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-hover:stroke-black group-focus-visible:animate-pulse group-focus-visible:stroke-black dark:group-hover:stroke-white dark:group-focus-visible:stroke-white"
+            class="transition-colors duration-300 ease-in-out group-hover:stroke-[#17211d] group-focus-visible:stroke-[#17211d] dark:group-hover:stroke-white dark:group-focus-visible:stroke-white"
           >
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
@@ -65,7 +88,7 @@ import BackToTop from "@components/BackToTop.astro";
         <button
           id="system-theme-button"
           aria-label="System theme"
-          class="group flex size-9 items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
+          class="group flex size-9 items-center justify-center rounded-md border border-[#17211d]/10 hover:bg-[#17211d]/5 focus-visible:bg-[#17211d]/5 dark:border-white/10 dark:hover:bg-white/10 dark:focus-visible:bg-white/10"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +100,7 @@ import BackToTop from "@components/BackToTop.astro";
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-hover:stroke-black group-focus-visible:animate-pulse group-focus-visible:stroke-black dark:group-hover:stroke-white dark:group-focus-visible:stroke-white"
+            class="transition-colors duration-300 ease-in-out group-hover:stroke-[#17211d] group-focus-visible:stroke-[#17211d] dark:group-hover:stroke-white dark:group-focus-visible:stroke-white"
           >
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
             <line x1="8" y1="21" x2="16" y2="21"></line>
