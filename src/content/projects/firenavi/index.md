@@ -63,7 +63,7 @@ Expo Routerを使ったReact Nativeアプリとして実装しています。入
 
 ## ダウンロードはこちら
 
-[App StoreでFIREナビを見る](https://apps.apple.com/jp/app/fire%E3%83%8A%E3%83%93-%E8%B3%87%E7%94%A3%E5%BD%A2%E6%88%90%E8%A8%88%E7%AE%97/id6764601476)
+<a href="https://apps.apple.com/jp/app/fire%E3%83%8A%E3%83%93-%E8%B3%87%E7%94%A3%E5%BD%A2%E6%88%90%E8%A8%88%E7%AE%97/id6764601476" target="_blank" rel="noopener noreferrer">App StoreでFIREナビを見る</a>
 
 ## プライバシーポリシー
 

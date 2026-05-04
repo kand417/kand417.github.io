@@ -59,7 +59,7 @@ iOSウィジェットでは、App Groups経由でアプリ本体と最低限の�
 
 ## ダウンロードはこちら
 
-[App Storeでごほうびスタンプを見る](https://apps.apple.com/jp/app/%E3%81%94%E3%81%BB%E3%81%86%E3%81%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%97/id6746368809)
+<a href="https://apps.apple.com/jp/app/%E3%81%94%E3%81%BB%E3%81%86%E3%81%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%97/id6746368809" target="_blank" rel="noopener noreferrer">App Storeでごほうびスタンプを見る</a>
 
 ## プライバシーポリシー
 
