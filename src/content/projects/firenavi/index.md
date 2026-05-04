@@ -1,11 +1,12 @@
 ---
 title: "FIREナビ"
 description: "FIREまでの距離を、必要資産・達成見込み・資産推移・同年代比較で見える化するiOSアプリ。"
-date: "2026-04-30"
+date: "2026-05-04"
 image: "./intro-image.png"
+icon: "./icon.png"
 platform: "iOS"
-role: "企画 / UI設計 / 実装 / App Store公開準備"
-status: "公開準備中"
+role: "企画 / UI設計 / 実装 / App Store公開"
+status: "公開中"
 stack:
   - Expo
   - React Native
@@ -60,9 +61,9 @@ Expo Routerを使ったReact Nativeアプリとして実装しています。入
 
 マネタイズはGoogle AdMobによる広告モデルです。初回入力の途中には広告を表示せず、シミュレーションや分析の主要な確認を妨げない位置に置く方針で設計しています。
 
-## 公開状況
+## ダウンロードはこちら
 
-現在、App Storeでの公開準備中です。公開後にダウンロードリンクを追加します。
+[App StoreでFIREナビを見る](https://apps.apple.com/jp/app/fire%E3%83%8A%E3%83%93-%E8%B3%87%E7%94%A3%E5%BD%A2%E6%88%90%E8%A8%88%E7%AE%97/id6764601476)
 
 ## プライバシーポリシー
 

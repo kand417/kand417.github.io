@@ -21,6 +21,7 @@ const projects = defineCollection({
     date: z.coerce.date(),
     draft: z.boolean().optional(),
     image: image().optional(),
+    icon: image().optional(),
     platform: z.string().optional(),
     role: z.string().optional(),
     status: z.string().optional(),

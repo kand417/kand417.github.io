@@ -6,7 +6,6 @@ import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import gohoubiStampIcon from "../content/projects/gohoubistamp/icon.png";
 
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -21,6 +20,8 @@ const projects: CollectionEntry<"projects">[] = (
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
 const featuredProject = projects[0];
+const featuredProjectImage =
+  featuredProject?.data.icon || featuredProject?.data.image;
 const featuredHighlights = featuredProject?.data.highlights || [
   "日常の中で続けやすい体験設計",
   "迷わず使えるシンプルなUI",
@@ -119,13 +120,17 @@ const metrics = [
                     {featuredProject.data.description}
                   </p>
                 </div>
-                <img
-                  src={gohoubiStampIcon.src}
-                  width="88"
-                  height="88"
-                  alt="ごほうびスタンプのアプリアイコン"
-                  class="size-20 shrink-0 rounded-[1.4rem] shadow-lg shadow-[#17211d]/10 sm:size-24"
-                />
+                {
+                  featuredProjectImage && (
+                    <img
+                      src={featuredProjectImage.src}
+                      width={featuredProjectImage.width}
+                      height={featuredProjectImage.height}
+                      alt={`${featuredProject.data.title}のアプリアイコン`}
+                      class="size-20 shrink-0 rounded-[1.4rem] object-cover shadow-lg shadow-[#17211d]/10 sm:size-24"
+                    />
+                  )
+                }
               </div>
               <div class="mt-8 divide-y divide-[#17211d]/10 dark:divide-white/10">
                 {featuredHighlights.map((highlight) => (
