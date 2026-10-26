@@ -1,5 +1,5 @@
 ---
-import Search from "astro-pagefind/components/Search";
+import "@pagefind/default-ui/css/ui.css";
 ---
 
 <aside data-pagefind-ignore>
@@ -12,15 +12,7 @@ import Search from "astro-pagefind/components/Search";
       id="pagefind-container"
       class="m-0 flex h-fit max-h-[80%] w-full max-w-(--breakpoint-sm) flex-col overflow-auto rounded-sm border border-black/15 bg-neutral-100 p-2 px-4 py-3 shadow-lg dark:border-white/20 dark:bg-neutral-900"
     >
-      <Search
-        id="search"
-        className="pagefind-ui"
-        uiOptions={{
-          showImages: false,
-          excerptLength: 15,
-          resetStyles: false,
-        }}
-      />
+      <div id="search" class="pagefind-ui pagefind-init"></div>
       <div class="mr-2 pb-1 pt-4 text-right text-xs dark:prose-invert">
         Press <span class="prose text-xs dark:prose-invert"
           ><kbd class="">Esc</kbd></span
@@ -29,6 +21,27 @@ import Search from "astro-pagefind/components/Search";
     </div>
   </div>
 </aside>
+
+<script>
+  // astro-pagefind 2 switched to the Component UI, so initialize the Default UI here
+  import { PagefindUI } from "@pagefind/default-ui";
+
+  function initPagefind() {
+    // #search lives inside a transition:persist element, so initialize only once
+    const el = document.querySelector("#search.pagefind-init");
+    if (!el) return;
+    new PagefindUI({
+      element: "#search",
+      bundlePath: `${import.meta.env.BASE_URL}pagefind/`,
+      showImages: false,
+      excerptLength: 15,
+      resetStyles: false,
+    });
+    el.classList.remove("pagefind-init");
+  }
+
+  document.addEventListener("astro:page-load", initPagefind);
+</script>
 
 <script is:inline>
   const magnifyingGlass = document.getElementById("magnifying-glass");
