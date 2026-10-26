@@ -10,6 +10,11 @@ export default defineConfig({
   integrations: [sitemap(), mdx(), pagefind()],
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Keep font subsets as separate files so unicode-range can skip unused ones
+      assetsInlineLimit: (filePath) =>
+        /\.(woff2?|ttf|otf)$/.test(filePath) ? false : undefined,
+    },
   },
   markdown: {
     shikiConfig: {
