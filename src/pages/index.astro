@@ -5,6 +5,8 @@ import { SITE, HOME, SOCIALS } from "@consts";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import avatar from "@assets/avatar.png";
 import type { CollectionEntry } from "astro:content";
 
 const blog = (await getCollection("blog"))
@@ -55,11 +57,21 @@ const metrics = [
     <Container>
       <div class="grid gap-12 lg:grid-cols-[1fr_0.92fr] lg:items-center">
         <div class="animate max-w-3xl">
-          <p
-            class="mb-5 text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
-          >
-            kand417 / Independent App Developer
-          </p>
+          <div class="mb-6 flex items-center gap-4">
+            <Image
+              src={avatar}
+              alt="kand417のアイコン"
+              width={160}
+              height={160}
+              loading="eager"
+              class="size-16 rounded-full border border-[#17211d]/10 shadow-lg shadow-[#17211d]/10 sm:size-20 dark:border-white/10 dark:shadow-black/20"
+            />
+            <p
+              class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+            >
+              kand417 / Independent App Developer
+            </p>
+          </div>
           <h1
             class="max-w-3xl text-4xl leading-[1.08] font-semibold text-[#17211d] sm:text-5xl lg:text-6xl dark:text-white"
           >

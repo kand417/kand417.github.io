@@ -2,16 +2,22 @@
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
 import { SITE } from "@consts";
+import { Image } from "astro:assets";
+import avatar from "@assets/avatar.png";
 ---
 
 <header transition:persist>
   <Container>
     <div class="flex items-center justify-between gap-4">
       <Link href="/" underline={false} class="group flex items-center gap-3">
-        <span
-          class="grid size-9 place-items-center rounded-md border border-[#17211d]/10 bg-white text-sm font-semibold text-[#17211d] shadow-sm shadow-[#17211d]/5 transition-colors group-hover:border-[#1d6f5c]/40 dark:border-white/10 dark:bg-white/5 dark:text-white"
-          aria-hidden="true">k</span
-        >
+        <Image
+          src={avatar}
+          alt=""
+          width={72}
+          height={72}
+          loading="eager"
+          class="size-9 rounded-full border border-[#17211d]/10 shadow-sm shadow-[#17211d]/5 transition-colors group-hover:border-[#1d6f5c]/40 dark:border-white/10"
+        />
         <span class="flex flex-col leading-none">
           <span class="font-semibold text-[#17211d] dark:text-white"
             >{SITE.TITLE}</span
