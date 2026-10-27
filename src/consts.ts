@@ -19,6 +19,11 @@ export const BLOG: Metadata = {
   DESCRIPTION: "アプリ開発や個人開発の記録をまとめています。",
 };
 
+export const ABOUT: Metadata = {
+  TITLE: "About",
+  DESCRIPTION: "アプリを開発している、あんでぃの自己紹介です。",
+};
+
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
   DESCRIPTION: "kand417が開発したアプリケーションの紹介です。",
