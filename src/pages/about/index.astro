@@ -1,0 +1,282 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import { ABOUT, SOCIALS } from "@consts";
+import { Image } from "astro:assets";
+import avatar from "@assets/avatar.png";
+
+const career = [
+  {
+    period: "2023 – 2026",
+    title: "生成AI・AIエージェント向け SaaS の開発",
+    body: "Azure 上で提供する SaaS のフロントエンドを、React / TypeScript で設計・実装・レビューしました。フロントエンドリーダー、スクラムマスター、プロダクトオーナーも経験し、Claude Code を前提にした開発プロセスづくりにも関わりました。",
+  },
+  {
+    period: "2018 – 2023",
+    title: "コンテナ運用管理製品の企画・開発",
+    body: "開発リーダーとして、React のフロントエンドと Python のバックエンドで製品を開発しました。Kubernetes や OpenShift の技術検証も担当しました。",
+  },
+  {
+    period: "2017",
+    title: "エッジ向け Java アプリケーション基盤の企画・開発",
+    body: "Java / OSGi をベースにしたアプリケーション基盤を、開発リーダーとして企画から開発まで進めました。",
+  },
+  {
+    period: "2007 – 2016",
+    title: "企業向け Web アプリケーションサーバ製品の開発",
+    body: "Java による機能開発と保守、Windows Server / RHEL 環境での検証を長く担当しました。",
+  },
+];
+
+const skills = [
+  {
+    category: "Frontend / Mobile",
+    items: ["TypeScript", "React", "React Native", "Expo", "Zustand"],
+  },
+  {
+    category: "Backend",
+    items: ["Java", "Python", "FastAPI", "OSGi"],
+  },
+  {
+    category: "Cloud / Infra",
+    items: ["Microsoft Azure", "Docker", "Kubernetes", "OpenShift", "Linux"],
+  },
+  {
+    category: "AI-assisted Development",
+    items: ["Claude Code", "Codex", "GitHub Copilot"],
+  },
+  {
+    category: "Team",
+    items: ["Scrum", "Scrum Master", "Product Owner", "開発リーダー"],
+  },
+];
+
+const values = [
+  {
+    title: "自分の手で作り続ける",
+    body: "リーダーやスクラムマスターの経験は、開発の背景や優先順位を理解するために活かしつつ、設計・実装・レビューに自分で関わることを大切にしています。",
+  },
+  {
+    title: "AI に任せて、人が確かめる",
+    body: "実装の多くを AI コーディングエージェントに任せながら、設計の判断、レビュー、テストは人が担います。速さと品質を両立できる進め方を探っています。",
+  },
+  {
+    title: "公開まで持ち切る",
+    body: "作って終わりではなく、ストアに公開し、実際に使ってもらえる状態まで仕上げることを目標にしています。",
+  },
+];
+
+const certifications = [
+  "情報セキュリティスペシャリスト試験",
+  "ソフトウェア開発技術者試験",
+  "Red Hat 認定スペシャリスト - OpenShift Administration",
+];
+---
+
+<Layout title={ABOUT.TITLE} description={ABOUT.DESCRIPTION}>
+  <Container>
+    <section class="grid gap-10 lg:grid-cols-[0.72fr_1fr] lg:items-start">
+      <div class="animate">
+        <p
+          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+        >
+          About
+        </p>
+        <div class="mt-5 flex items-center gap-5">
+          <Image
+            src={avatar}
+            alt="あんでぃのアイコン"
+            width={192}
+            height={192}
+            loading="eager"
+            class="size-20 rounded-full border border-[#17211d]/10 shadow-lg shadow-[#17211d]/10 sm:size-24 dark:border-white/10 dark:shadow-black/20"
+          />
+          <div>
+            <h1
+              class="text-4xl leading-[1.12] font-semibold text-[#17211d] sm:text-5xl dark:text-white"
+            >
+              あんでぃ
+            </h1>
+            <p class="mt-2 text-sm text-[#17211d]/55 dark:text-white/55">
+              Software Engineer / App Developer
+            </p>
+          </div>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-2">
+          {
+            SOCIALS.map((SOCIAL) => (
+              <a
+                href={SOCIAL.HREF}
+                target="_blank"
+                rel="noreferrer"
+                class="rounded-md border border-[#17211d]/10 bg-white px-4 py-2.5 text-sm font-medium text-[#17211d]/70 transition-colors hover:border-[#1d6f5c]/35 hover:text-[#17211d] dark:border-white/10 dark:bg-white/5 dark:text-white/70 dark:hover:text-white"
+              >
+                {SOCIAL.NAME}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div
+        class="animate space-y-5 text-base leading-8 text-[#17211d]/70 dark:text-white/70"
+      >
+        <p>
+          はじめまして、あんでぃです。国内の IT
+          企業で約20年、ソフトウェア開発に携わってきました。Java
+          のミドルウェア製品の開発から始まり、コンテナ運用管理製品、生成 AI
+          向けの SaaS と、領域を広げながら設計・実装を続けてきました。
+        </p>
+        <p>
+          直近は React / TypeScript
+          を中心としたフロントエンド開発を担当しながら、スクラムマスターやプロダクトオーナーとしてチームとプロダクトの両方を見る経験も積みました。
+        </p>
+        <p>
+          個人開発では、AI
+          コーディングエージェントを相棒に、企画から設計、実装、App Store
+          での公開、公開後の改善までを一人で行っています。暮らしの中の小さな困りごとを、続けやすいアプリにすることを目指しています。
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-20">
+      <div class="animate">
+        <p
+          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+        >
+          Career
+        </p>
+        <h2 class="mt-3 text-3xl font-semibold text-[#17211d] dark:text-white">
+          これまでの経歴
+        </h2>
+      </div>
+      <ol class="mt-8 divide-y divide-[#17211d]/10 dark:divide-white/10">
+        {
+          career.map((item) => (
+            <li class="animate grid gap-2 py-6 sm:grid-cols-[10rem_1fr] sm:gap-8">
+              <p class="text-sm font-medium text-[#17211d]/50 tabular-nums dark:text-white/50">
+                {item.period}
+              </p>
+              <div>
+                <h3 class="font-semibold text-[#17211d] dark:text-white">
+                  {item.title}
+                </h3>
+                <p class="mt-2 text-sm leading-7 text-[#17211d]/65 dark:text-white/65">
+                  {item.body}
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-20 grid gap-8 lg:grid-cols-[0.72fr_1fr] lg:items-start">
+      <div class="animate">
+        <p
+          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+        >
+          Skills
+        </p>
+        <h2 class="mt-3 text-3xl font-semibold text-[#17211d] dark:text-white">
+          使っている技術
+        </h2>
+      </div>
+      <dl class="grid gap-6">
+        {
+          skills.map((skill) => (
+            <div class="animate border-t border-[#17211d]/10 pt-5 dark:border-white/10">
+              <dt class="text-xs font-medium text-[#17211d]/45 uppercase dark:text-white/45">
+                {skill.category}
+              </dt>
+              <dd class="mt-3 flex flex-wrap gap-2">
+                {skill.items.map((item) => (
+                  <span class="rounded-md border border-[#17211d]/10 px-3 py-1.5 text-xs font-medium text-[#17211d]/65 dark:border-white/10 dark:text-white/65">
+                    {item}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section
+      class="mt-20 border-y border-[#17211d]/10 py-16 dark:border-white/10"
+    >
+      <div class="animate">
+        <p
+          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+        >
+          Values
+        </p>
+        <h2 class="mt-3 text-3xl font-semibold text-[#17211d] dark:text-white">
+          開発で大切にしていること
+        </h2>
+      </div>
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        {
+          values.map((value) => (
+            <section class="animate border-t border-[#17211d]/10 pt-5 dark:border-white/10">
+              <h3 class="font-semibold text-[#17211d] dark:text-white">
+                {value.title}
+              </h3>
+              <p class="mt-3 text-sm leading-7 text-[#17211d]/65 dark:text-white/65">
+                {value.body}
+              </p>
+            </section>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mt-16 grid gap-10 lg:grid-cols-[0.72fr_1fr] lg:items-start">
+      <div class="animate">
+        <p
+          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+        >
+          Certifications
+        </p>
+        <h2 class="mt-3 text-2xl font-semibold text-[#17211d] dark:text-white">
+          資格
+        </h2>
+        <ul
+          class="mt-5 space-y-2 text-sm leading-7 text-[#17211d]/65 dark:text-white/65"
+        >
+          {certifications.map((certification) => <li>{certification}</li>)}
+        </ul>
+      </div>
+
+      <div
+        class="animate rounded-lg border border-[#17211d]/10 bg-white p-6 dark:border-white/10 dark:bg-white/5"
+      >
+        <p
+          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
+        >
+          Contact
+        </p>
+        <h2 class="mt-3 text-2xl font-semibold text-[#17211d] dark:text-white">
+          お気軽にご連絡ください
+        </h2>
+        <p class="mt-4 leading-8 text-[#17211d]/65 dark:text-white/65">
+          アプリへのご意見や、開発に関するご相談があれば、お問い合わせフォームからお送りください。
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a
+            href="/projects"
+            class="rounded-md bg-[#17211d] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#1d6f5c] focus-visible:bg-[#1d6f5c] dark:bg-white dark:text-[#101412] dark:hover:bg-[#69c4ad]"
+          >
+            アプリを見る
+          </a>
+          <a
+            href="/contact"
+            class="rounded-md border border-[#17211d]/12 bg-white px-4 py-2.5 text-sm font-medium text-[#17211d] transition-colors hover:border-[#1d6f5c]/35 hover:text-[#1d6f5c] focus-visible:border-[#1d6f5c]/35 focus-visible:text-[#1d6f5c] dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:text-[#69c4ad] dark:focus-visible:text-[#69c4ad]"
+          >
+            お問い合わせ
+          </a>
+        </div>
+      </div>
+    </section>
+  </Container>
+</Layout>
