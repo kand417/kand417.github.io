@@ -29,19 +29,13 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
   <Container>
     <section data-pagefind-ignore>
       <div class="animate max-w-3xl">
-        <p
-          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
-        >
-          Blog
-        </p>
+        <p class="text-sm font-medium text-[#1d6f5c] uppercase">Blog</p>
         <h1
-          class="mt-3 text-4xl leading-[1.12] font-semibold text-[#17211d] sm:text-5xl dark:text-white"
+          class="mt-3 text-4xl leading-[1.12] font-semibold text-[#17211d] sm:text-5xl"
         >
           開発の記録と考えたこと。
         </h1>
-        <p
-          class="mt-5 text-base leading-8 text-[#17211d]/65 dark:text-white/65"
-        >
+        <p class="mt-5 text-base leading-8 text-[#17211d]/65">
           アプリ開発の過程で得た気づきや、個人開発のメモを残しています。
         </p>
       </div>
@@ -49,7 +43,7 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
         {
           years.map((year) => (
             <section class="animate">
-              <div class="mb-5 border-b border-[#17211d]/10 pb-3 text-sm font-semibold text-[#17211d] dark:border-white/10 dark:text-white">
+              <div class="mb-5 border-b border-[#17211d]/10 pb-3 text-sm font-semibold text-[#17211d]">
                 {year}
               </div>
               <ul class="not-prose grid gap-5 lg:grid-cols-2">
