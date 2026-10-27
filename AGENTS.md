@@ -6,5 +6,6 @@
 
 ## 運用ルール
 
+- ユーザーとの会話は日本語で行う。
 - ブランチ名には対応する issue 番号を含める（例: `chore/3-update-dependencies`）。
 - ユーザーの指示に出てくる「イシュー」は GitHub の issue を指す。AI の回答では「issue」と書いてよい。
