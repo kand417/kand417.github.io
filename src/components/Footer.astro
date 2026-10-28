@@ -7,21 +7,18 @@ import BackToTop from "@components/BackToTop.astro";
 <footer class="animate">
   <Container>
     <div class="relative">
-      <div class="absolute -top-12 right-0">
+      <div class="absolute -top-16 right-0">
         <BackToTop />
       </div>
     </div>
     <div
       class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
     >
-      <div class="space-y-1">
-        <div class="font-medium text-[#17211d]">
-          &copy; {new Date().getFullYear()}
-          {SITE.TITLE}
+      <div class="space-y-1.5">
+        <div class="font-display font-bold text-slate-800">
+          あんでぃのポートフォリオ
         </div>
-        <div class="text-[#17211d]/55">
-          Thoughtful apps for everyday routines.
-        </div>
+        <div class="text-slate-500">Thoughtful apps for everyday routines.</div>
       </div>
       <div class="flex flex-wrap items-center gap-2">
         {
@@ -30,7 +27,7 @@ import BackToTop from "@components/BackToTop.astro";
               href={SOCIAL.HREF}
               target="_blank"
               rel="noreferrer"
-              class="rounded-md border border-[#17211d]/10 px-3 py-2 text-[#17211d]/70 transition-colors hover:border-[#1d6f5c]/35 hover:text-[#17211d]"
+              class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-600 transition-colors hover:border-brand-300 hover:text-brand-700 focus-visible:border-brand-300 focus-visible:text-brand-700"
               aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
             >
               {SOCIAL.NAME}
@@ -38,6 +35,10 @@ import BackToTop from "@components/BackToTop.astro";
           ))
         }
       </div>
+    </div>
+    <div class="mt-8 border-t border-slate-200/80 pt-6 text-xs text-slate-500">
+      &copy; {new Date().getFullYear()}
+      {SITE.TITLE}
     </div>
   </Container>
 </footer>

@@ -2,24 +2,13 @@
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 
-import "@fontsource/geist-sans/100.css";
-import "@fontsource/geist-sans/200.css";
-import "@fontsource/geist-sans/300.css";
 import "@fontsource/geist-sans/400.css";
 import "@fontsource/geist-sans/500.css";
 import "@fontsource/geist-sans/600.css";
 import "@fontsource/geist-sans/700.css";
-import "@fontsource/geist-sans/800.css";
-import "@fontsource/geist-sans/900.css";
-import "@fontsource/geist-mono/100.css";
-import "@fontsource/geist-mono/200.css";
-import "@fontsource/geist-mono/300.css";
 import "@fontsource/geist-mono/400.css";
 import "@fontsource/geist-mono/500.css";
-import "@fontsource/geist-mono/600.css";
-import "@fontsource/geist-mono/700.css";
-import "@fontsource/geist-mono/800.css";
-import "@fontsource/geist-mono/900.css";
+import "@fontsource/m-plus-rounded-1c/700.css";
 
 interface Props {
   title: string;
@@ -72,6 +61,7 @@ const { title, description, image = "/og-image.jpg" } = Astro.props;
   function init() {
     onScroll();
     animate();
+    updateNavLinks();
     addCopyCodeButtons();
 
     const backToTop = document.getElementById("back-to-top");
@@ -83,13 +73,48 @@ const { title, description, image = "/og-image.jpg" } = Astro.props;
     document.addEventListener("scroll", onScroll);
   }
 
-  function animate() {
-    const animateElements = document.querySelectorAll(".animate");
+  let revealObserver;
 
-    animateElements.forEach((element, index) => {
-      setTimeout(() => {
-        element.classList.add("show");
-      }, index * 100);
+  function animate() {
+    // Stop watching the previous page's elements after a client-side navigation
+    revealObserver?.disconnect();
+
+    const animateElements = document.querySelectorAll(".animate:not(.show)");
+
+    if (!("IntersectionObserver" in window)) {
+      animateElements.forEach((element) => element.classList.add("show"));
+      return;
+    }
+
+    // Reveal elements as they scroll into view, staggering those that appear together
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .forEach((entry, index) => {
+            entry.target.style.transitionDelay = `${index * 90}ms`;
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          });
+      },
+      { rootMargin: "0px 0px -40px 0px" },
+    );
+
+    animateElements.forEach((element) => observer.observe(element));
+    revealObserver = observer;
+  }
+
+  function updateNavLinks() {
+    // The header persists across page transitions, so mark the current page on every navigation
+    const path = window.location.pathname;
+    document.querySelectorAll("[data-nav-link]").forEach((link) => {
+      const href = link.getAttribute("href");
+      const isCurrent = path === href || path.startsWith(`${href}/`);
+      if (isCurrent) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
     });
   }
 

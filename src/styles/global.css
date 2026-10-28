@@ -4,11 +4,63 @@
 
 @theme {
   --font-sans:
-    Geist Sans, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    Geist Sans, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
+    "Yu Gothic UI", Meiryo, ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-display:
+    "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", "Hiragino Sans",
+    ui-sans-serif, system-ui, sans-serif;
   --font-mono:
     Geist Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
+
+  /* Sky blue leaning toward light blue. 600 is the darkest shade used behind white text (AA contrast). */
+  --color-brand-50: #f0f7fe;
+  --color-brand-100: #ddeefc;
+  --color-brand-200: #c2e0fa;
+  --color-brand-300: #96cbf6;
+  --color-brand-400: #63b0ee;
+  --color-brand-500: #3d93e5;
+  --color-brand-600: #2677d1;
+  --color-brand-700: #1f60b0;
+  --color-brand-800: #1f508f;
+  --color-brand-900: #1f4573;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-hero-in: hero-in 1.6s var(--ease-out-soft) both;
+  --animate-hero-drift: hero-drift 24s ease-in-out infinite alternate;
+  --animate-soft-pulse: soft-pulse 2.8s ease-in-out infinite;
+
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes hero-drift {
+    from {
+      transform: scale(1.04) translate3d(0, 0, 0);
+    }
+    to {
+      transform: scale(1.08) translate3d(-1.5%, -1%, 0);
+    }
+  }
+
+  @keyframes soft-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.55;
+    }
+    50% {
+      transform: scale(2.2);
+      opacity: 0;
+    }
+  }
 }
 
 /*
@@ -25,8 +77,57 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-slate-200, currentColor);
   }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-feature-settings: "palt";
+    letter-spacing: 0.02em;
+    /* Break Japanese at phrase boundaries (Chromium) and avoid one-word last lines */
+    word-break: auto-phrase;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-400);
+    outline-offset: 3px;
+  }
+}
+
+@utility eyebrow {
+  @apply inline-flex items-center gap-2 text-xs font-semibold tracking-[0.16em] text-brand-600 uppercase;
+
+  &::before {
+    content: "";
+    @apply h-px w-5 bg-brand-400;
+  }
+}
+
+@utility page-title {
+  @apply text-3xl leading-[1.45] font-bold text-slate-800 sm:text-[2.6rem];
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition duration-300 ease-out-soft hover:-translate-y-0.5 focus-visible:-translate-y-0.5 active:translate-y-0;
+}
+
+@utility btn-primary {
+  @apply bg-brand-600 text-white shadow-md shadow-brand-600/20 hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/25 focus-visible:bg-brand-700;
+}
+
+@utility btn-secondary {
+  @apply border border-slate-200 bg-white text-slate-700 hover:border-brand-300 hover:text-brand-700 focus-visible:border-brand-300 focus-visible:text-brand-700;
+}
+
+@utility chip {
+  @apply inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600;
 }
 
 @layer utilities {
@@ -44,54 +145,84 @@
   body {
     @apply font-sans antialiased;
     @apply flex flex-col;
-    @apply bg-[#f6f8f7] text-[#17211d]/75;
+    @apply bg-white text-slate-600;
+    /* A faint wash of sky at the top of every page */
+    background-image: radial-gradient(
+      90rem 32rem at 85% -12rem,
+      var(--color-brand-50),
+      transparent 70%
+    );
+    background-repeat: no-repeat;
   }
 
   header {
-    @apply fixed top-0 right-0 left-0 z-50 border-b border-[#17211d]/10 py-4;
-    @apply bg-[#f6f8f7]/85;
-    @apply saturate-150 backdrop-blur-md;
+    @apply fixed top-0 right-0 left-0 z-50 border-b border-transparent py-3.5;
+    @apply transition-[background-color,border-color,box-shadow] duration-500;
+  }
+
+  html.scrolled header {
+    @apply border-slate-200/70 bg-white/80 shadow-sm shadow-slate-900/[0.03] backdrop-blur-md backdrop-saturate-150;
   }
 
   main {
-    @apply flex-1 pt-28 pb-20;
+    @apply flex-1 pt-28 pb-24;
   }
 
   footer {
-    @apply border-t border-[#17211d]/10 py-8 text-sm;
+    @apply border-t border-slate-200/80 bg-slate-50/70 py-10 text-sm;
   }
 
   article {
-    @apply prose prose-neutral prose-img:mx-auto prose-img:my-auto max-w-full;
-    @apply prose-headings:font-semibold prose-headings:text-[#17211d];
-    @apply prose-p:leading-8 prose-li:leading-8 prose-a:font-medium;
-    @apply prose-img:rounded-lg prose-img:border prose-img:border-[#17211d]/10;
+    @apply prose max-w-full prose-slate prose-img:mx-auto prose-img:my-auto;
+    @apply prose-headings:font-bold prose-headings:text-slate-800;
+    @apply prose-p:leading-8 prose-a:font-medium prose-li:leading-8;
+    @apply prose-img:rounded-2xl prose-img:border prose-img:border-slate-200;
   }
 }
 
 @layer utilities {
   article a {
-    @apply font-sans text-current underline underline-offset-[3px];
-    @apply decoration-[#1d6f5c]/40;
+    @apply font-sans text-brand-700 underline underline-offset-[3px];
+    @apply decoration-brand-200 decoration-2;
     @apply transition-colors duration-300 ease-in-out;
   }
   article a:hover {
-    @apply text-[#17211d];
-    @apply decoration-[#1d6f5c];
+    @apply text-brand-600;
+    @apply decoration-brand-400;
   }
 }
 
 ::selection {
-  background: rgba(29, 111, 92, 0.18);
+  background: var(--color-brand-100);
 }
 
+/* Reveal on scroll: Head.astro adds .show when the element enters the viewport */
 .animate {
-  @apply -translate-y-3 opacity-0;
-  @apply transition-all duration-300 ease-out;
+  @apply translate-y-4 opacity-0;
+  transition:
+    opacity 0.8s var(--ease-out-soft),
+    translate 0.8s var(--ease-out-soft);
 }
 
 .animate.show {
   @apply translate-y-0 opacity-100;
+}
+
+/* Marker-style highlight that draws itself in once revealed */
+.marker {
+  background-image: linear-gradient(
+    transparent 62%,
+    var(--color-brand-100) 62%,
+    var(--color-brand-100) 92%,
+    transparent 92%
+  );
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 1.2s var(--ease-out-soft) 0.5s;
+}
+
+.show .marker {
+  background-size: 100% 100%;
 }
 
 html #back-to-top {
@@ -102,32 +233,46 @@ html.scrolled #back-to-top {
   @apply pointer-events-auto opacity-100;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+
+  .animate {
+    @apply translate-y-0;
+  }
+}
+
 /* shiki config */
 pre {
-  @apply rounded-lg border border-[#17211d]/15 py-5;
+  @apply rounded-2xl border border-slate-200 py-5;
 }
 
 :root {
-  --astro-code-foreground: #09090b;
-  --astro-code-background: #fafafa;
-  --astro-code-token-comment: #a19595;
-  --astro-code-token-keyword: #f47067;
-  --astro-code-token-string: #00a99a;
-  --astro-code-token-function: #429996;
-  --astro-code-token-constant: #2b70c5;
-  --astro-code-token-parameter: #4e8fdf;
+  --astro-code-foreground: #1e293b;
+  --astro-code-background: #f8fafc;
+  --astro-code-token-comment: #94a3b8;
+  --astro-code-token-keyword: #d6336c;
+  --astro-code-token-string: #0f8a7e;
+  --astro-code-token-function: #2677d1;
+  --astro-code-token-constant: #1f60b0;
+  --astro-code-token-parameter: #3d93e5;
   --astro-code-token-string-expression: #ae42a0;
-  --astro-code-token-punctuation: #8996a3;
-  --astro-code-token-link: #8d85ff;
+  --astro-code-token-punctuation: #64748b;
+  --astro-code-token-link: #2677d1;
 }
 
 /* copy code button on codeblocks */
 .copy-code {
-  @apply absolute top-3 right-3 grid size-9 place-content-center rounded-md border border-[#17211d]/15 bg-[#f6f8f7] text-center duration-300 ease-in-out;
+  @apply absolute top-3 right-3 grid size-9 place-content-center rounded-lg border border-slate-200 bg-white text-center duration-300 ease-in-out;
 }
 
 .copy-code:hover {
-  @apply bg-[#e8eeeb] transition-colors;
+  @apply bg-slate-100 transition-colors;
 }
 
 .copy-code:active {

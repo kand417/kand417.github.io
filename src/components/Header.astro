@@ -3,36 +3,56 @@ import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
 import { Image } from "astro:assets";
 import avatar from "@assets/avatar.png";
+
+const navItems = [
+  { href: "/about", label: "自己紹介" },
+  { href: "/projects", label: "アプリ" },
+  { href: "/blog", label: "ブログ" },
+  { href: "/contact", label: "お問い合わせ" },
+];
 ---
 
 <header transition:persist>
   <Container>
     <div class="flex items-center justify-between gap-4">
-      <Link href="/" underline={false} class="group flex items-center gap-3">
+      <Link
+        href="/"
+        underline={false}
+        class="group flex items-center gap-2.5 hover:text-current focus-visible:text-current"
+      >
         <Image
           src={avatar}
           alt=""
           width={72}
           height={72}
           loading="eager"
-          class="size-9 rounded-full border border-[#17211d]/10 shadow-sm shadow-[#17211d]/5 transition-colors group-hover:border-[#1d6f5c]/40"
+          class="size-9 rounded-full bg-white shadow-sm ring-2 shadow-slate-900/10 ring-white transition-transform duration-500 ease-out-soft group-hover:scale-105 group-hover:-rotate-6"
         />
-        <span class="sr-only font-semibold text-[#17211d] sm:not-sr-only"
+        <span
+          class="sr-only font-display font-bold tracking-wide text-slate-800 sm:not-sr-only"
           >あんでぃのポートフォリオ</span
         >
       </Link>
       <nav
-        class="flex items-center gap-1.5 text-[13px] whitespace-nowrap sm:gap-2 sm:text-sm"
+        class="flex items-center gap-0.5 text-[13px] font-medium whitespace-nowrap sm:gap-1 sm:text-sm"
         aria-label="Primary"
       >
-        <Link href="/about" underline={false}>自己紹介</Link>
-        <Link href="/projects" underline={false}>アプリ</Link>
-        <Link href="/blog" underline={false}>ブログ</Link>
-        <Link href="/contact" underline={false}>お問い合わせ</Link>
+        {
+          navItems.map((item) => (
+            <Link
+              href={item.href}
+              underline={false}
+              data-nav-link
+              class="rounded-full px-2 py-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus-visible:text-slate-900 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700 sm:px-3"
+            >
+              {item.label}
+            </Link>
+          ))
+        }
         <button
           id="magnifying-glass"
           aria-label="Search"
-          class="grid size-9 place-items-center rounded-md border border-[#17211d]/10 bg-white text-[#17211d]/70 transition-colors duration-300 ease-in-out hover:border-[#1d6f5c]/40 hover:text-[#17211d] focus-visible:border-[#1d6f5c]/40 focus-visible:text-[#17211d]"
+          class="ml-1 grid size-9 place-items-center rounded-full border border-slate-200 bg-white/80 text-slate-500 transition-colors duration-300 ease-in-out hover:border-brand-300 hover:text-brand-700 focus-visible:border-brand-300 focus-visible:text-brand-700"
         >
           <svg
             height="16"

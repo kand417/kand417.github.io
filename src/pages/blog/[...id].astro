@@ -59,7 +59,7 @@ const { Content, headings } = await render(post);
       </div>
       <div class="my-10">
         <div
-          class="animate flex flex-wrap items-center gap-2 text-sm text-[#17211d]/55"
+          class="animate flex flex-wrap items-center gap-2 text-sm text-slate-500"
         >
           <FormattedDate date={post.data.date} />
           {
@@ -71,12 +71,10 @@ const { Content, headings } = await render(post);
             )
           }
         </div>
-        <h1
-          class="animate mt-4 text-4xl leading-[1.12] font-semibold text-[#17211d] sm:text-5xl"
-        >
+        <h1 class="animate mt-4 page-title">
           {post.data.title}
         </h1>
-        <p class="animate mt-5 text-lg leading-8 text-[#17211d]/65">
+        <p class="animate mt-5 text-lg leading-8 text-slate-600">
           {post.data.description}
         </p>
         {
@@ -85,7 +83,7 @@ const { Content, headings } = await render(post);
               {post.data.tags.map((tag) => (
                 <a
                   href={`/tags/${tag}`}
-                  class="rounded-md border border-[#17211d]/10 bg-white px-3 py-1.5 text-sm transition-colors duration-300 ease-in-out hover:border-[#1d6f5c]/35 hover:text-[#1d6f5c] focus-visible:border-[#1d6f5c]/35 focus-visible:text-[#1d6f5c]"
+                  class="rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-sm text-slate-600 transition-colors duration-300 hover:border-brand-300 hover:text-brand-700 focus-visible:border-brand-300 focus-visible:text-brand-700"
                 >
                   {tag}
                 </a>
