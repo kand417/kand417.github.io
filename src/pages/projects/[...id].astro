@@ -50,21 +50,15 @@ const metaItems = [
       class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start"
     >
       <div class="animate max-w-3xl">
-        <p
-          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
-        >
-          Application
-        </p>
-        <h1
-          class="mt-4 text-4xl leading-[1.12] font-semibold text-[#17211d] sm:text-5xl dark:text-white"
-        >
+        <p class="eyebrow">Application</p>
+        <h1 class="mt-4 page-title">
           {project.data.title}
         </h1>
-        <p class="mt-5 text-lg leading-8 text-[#17211d]/65 dark:text-white/65">
+        <p class="mt-5 text-lg leading-8 text-slate-600">
           {project.data.description}
         </p>
         <div
-          class="mt-6 flex flex-wrap items-center gap-2 text-sm text-[#17211d]/55 dark:text-white/55"
+          class="mt-6 flex flex-wrap items-center gap-2 text-sm text-slate-500"
         >
           <FormattedDate date={project.data.date} />
           {
@@ -84,7 +78,7 @@ const metaItems = [
                   href={project.data.demoURL}
                   target="_blank"
                   rel="noreferrer"
-                  class="rounded-md bg-[#17211d] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#1d6f5c] focus-visible:bg-[#1d6f5c] dark:bg-white dark:text-[#101412] dark:hover:bg-[#69c4ad]"
+                  class="btn btn-primary"
                 >
                   デモを見る
                 </a>
@@ -94,7 +88,7 @@ const metaItems = [
                   href={project.data.repoURL}
                   target="_blank"
                   rel="noreferrer"
-                  class="rounded-md border border-[#17211d]/10 bg-white px-4 py-2.5 text-sm font-medium text-[#17211d] transition-colors hover:border-[#1d6f5c]/35 hover:text-[#1d6f5c] dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:text-[#69c4ad]"
+                  class="btn btn-secondary"
                 >
                   リポジトリ
                 </a>
@@ -104,30 +98,24 @@ const metaItems = [
         }
       </div>
 
-      <aside
-        class="animate rounded-lg border border-[#17211d]/10 bg-white p-5 dark:border-white/10 dark:bg-white/5"
-      >
-        <dl class="divide-y divide-[#17211d]/10 dark:divide-white/10">
+      <aside class="animate rounded-2xl border border-slate-200 bg-white p-5">
+        <dl class="divide-y divide-slate-200">
           {
             metaItems.map((item) => (
               <div class="py-4 first:pt-0 last:pb-0">
-                <dt class="text-xs font-medium text-[#17211d]/45 uppercase dark:text-white/45">
+                <dt class="text-xs font-medium text-slate-500 uppercase">
                   {item.label}
                 </dt>
-                <dd class="mt-2 font-medium text-[#17211d] dark:text-white">
-                  {item.value}
-                </dd>
+                <dd class="mt-2 font-medium text-slate-800">{item.value}</dd>
               </div>
             ))
           }
         </dl>
         {
           project.data.stack && project.data.stack.length > 0 && (
-            <div class="mt-6 flex flex-wrap gap-2 border-t border-[#17211d]/10 pt-5 dark:border-white/10">
+            <div class="mt-6 flex flex-wrap gap-2 border-t border-slate-200 pt-5">
               {project.data.stack.map((item) => (
-                <span class="rounded-md border border-[#17211d]/10 px-3 py-1.5 text-xs font-medium text-[#17211d]/65 dark:border-white/10 dark:text-white/65">
-                  {item}
-                </span>
+                <span class="chip">{item}</span>
               ))}
             </div>
           )
@@ -137,7 +125,7 @@ const metaItems = [
 
     {
       projectImage && (
-        <figure class="animate mt-10 overflow-hidden rounded-lg border border-[#17211d]/10 bg-white dark:border-white/10 dark:bg-white/5">
+        <figure class="animate mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-white">
           <img
             src={projectImage.src}
             width={projectImage.width}
@@ -151,16 +139,14 @@ const metaItems = [
 
     {
       project.data.highlights && project.data.highlights.length > 0 && (
-        <section class="animate mt-12 grid gap-4 border-y border-[#17211d]/10 py-6 md:grid-cols-3 dark:border-white/10">
+        <section class="animate mt-12 grid gap-4 border-y border-slate-200 py-6 md:grid-cols-3">
           {project.data.highlights.map((highlight) => (
             <div class="flex gap-4">
               <span
-                class="mt-2 size-2 shrink-0 rounded-full bg-[#d59b2f]"
+                class="mt-2 size-2 shrink-0 rounded-full bg-brand-400"
                 aria-hidden="true"
               />
-              <p class="text-sm leading-7 text-[#17211d]/68 dark:text-white/68">
-                {highlight}
-              </p>
+              <p class="text-sm leading-7 text-slate-600">{highlight}</p>
             </div>
           ))}
         </section>

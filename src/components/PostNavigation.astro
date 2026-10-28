@@ -7,7 +7,7 @@ const { prevPost, nextPost } = Astro.props;
     prevPost?.id ? (
       <a
         href={`/blog/${prevPost?.id}`}
-        class="group relative flex flex-nowrap rounded-lg border border-[#17211d]/10 bg-white px-4 py-3 pl-10 no-underline transition-colors duration-300 ease-in-out hover:border-[#1d6f5c]/35 hover:text-[#1d6f5c] focus-visible:border-[#1d6f5c]/35 focus-visible:text-[#1d6f5c] dark:border-white/10 dark:bg-white/5 dark:hover:text-[#69c4ad] dark:focus-visible:text-[#69c4ad]"
+        class="group relative flex flex-nowrap rounded-2xl border border-slate-200 bg-white px-4 py-3 pl-10 no-underline transition-colors duration-300 ease-in-out hover:border-brand-300 hover:text-brand-700 focus-visible:border-brand-300 focus-visible:text-brand-700"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ const { prevPost, nextPost } = Astro.props;
     nextPost?.id ? (
       <a
         href={`/blog/${nextPost?.id}`}
-        class="group relative flex grow flex-row-reverse flex-nowrap rounded-lg border border-[#17211d]/10 bg-white px-4 py-4 pr-10 no-underline transition-colors duration-300 ease-in-out hover:border-[#1d6f5c]/35 hover:text-[#1d6f5c] focus-visible:border-[#1d6f5c]/35 focus-visible:text-[#1d6f5c] dark:border-white/10 dark:bg-white/5 dark:hover:text-[#69c4ad] dark:focus-visible:text-[#69c4ad]"
+        class="group relative flex grow flex-row-reverse flex-nowrap rounded-2xl border border-slate-200 bg-white px-4 py-4 pr-10 no-underline transition-colors duration-300 ease-in-out hover:border-brand-300 hover:text-brand-700 focus-visible:border-brand-300 focus-visible:text-brand-700"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

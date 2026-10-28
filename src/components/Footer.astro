@@ -7,21 +7,18 @@ import BackToTop from "@components/BackToTop.astro";
 <footer class="animate">
   <Container>
     <div class="relative">
-      <div class="absolute -top-12 right-0">
+      <div class="absolute -top-16 right-0">
         <BackToTop />
       </div>
     </div>
     <div
       class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
     >
-      <div class="space-y-1">
-        <div class="font-medium text-[#17211d] dark:text-white">
-          &copy; {new Date().getFullYear()}
-          {SITE.TITLE}
+      <div class="space-y-1.5">
+        <div class="font-display font-bold text-slate-800">
+          あんでぃのポートフォリオ
         </div>
-        <div class="text-[#17211d]/55 dark:text-white/55">
-          Thoughtful apps for everyday routines.
-        </div>
+        <div class="text-slate-500">Thoughtful apps for everyday routines.</div>
       </div>
       <div class="flex flex-wrap items-center gap-2">
         {
@@ -30,84 +27,18 @@ import BackToTop from "@components/BackToTop.astro";
               href={SOCIAL.HREF}
               target="_blank"
               rel="noreferrer"
-              class="rounded-md border border-[#17211d]/10 px-3 py-2 text-[#17211d]/70 transition-colors hover:border-[#1d6f5c]/35 hover:text-[#17211d] dark:border-white/10 dark:text-white/70 dark:hover:text-white"
+              class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-600 transition-colors hover:border-brand-300 hover:text-brand-700 focus-visible:border-brand-300 focus-visible:text-brand-700"
               aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
             >
               {SOCIAL.NAME}
             </a>
           ))
         }
-        <button
-          id="light-theme-button"
-          aria-label="Light theme"
-          class="group flex size-9 items-center justify-center rounded-md border border-[#17211d]/10 hover:bg-[#17211d]/5 focus-visible:bg-[#17211d]/5 dark:border-white/10 dark:hover:bg-white/10 dark:focus-visible:bg-white/10"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out group-hover:stroke-[#17211d] group-focus-visible:stroke-[#17211d] dark:group-hover:stroke-white dark:group-focus-visible:stroke-white"
-          >
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-        </button>
-        <button
-          id="dark-theme-button"
-          aria-label="Dark theme"
-          class="group flex size-9 items-center justify-center rounded-md border border-[#17211d]/10 hover:bg-[#17211d]/5 focus-visible:bg-[#17211d]/5 dark:border-white/10 dark:hover:bg-white/10 dark:focus-visible:bg-white/10"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out group-hover:stroke-[#17211d] group-focus-visible:stroke-[#17211d] dark:group-hover:stroke-white dark:group-focus-visible:stroke-white"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-        <button
-          id="system-theme-button"
-          aria-label="System theme"
-          class="group flex size-9 items-center justify-center rounded-md border border-[#17211d]/10 hover:bg-[#17211d]/5 focus-visible:bg-[#17211d]/5 dark:border-white/10 dark:hover:bg-white/10 dark:focus-visible:bg-white/10"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out group-hover:stroke-[#17211d] group-focus-visible:stroke-[#17211d] dark:group-hover:stroke-white dark:group-focus-visible:stroke-white"
-          >
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-          </svg>
-        </button>
       </div>
+    </div>
+    <div class="mt-8 border-t border-slate-200/80 pt-6 text-xs text-slate-500">
+      &copy; {new Date().getFullYear()}
+      {SITE.TITLE}
     </div>
   </Container>
 </footer>

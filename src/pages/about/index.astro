@@ -77,11 +77,7 @@ const certifications = [
   <Container>
     <section class="grid gap-10 lg:grid-cols-[0.72fr_1fr] lg:items-start">
       <div class="animate">
-        <p
-          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
-        >
-          About
-        </p>
+        <p class="eyebrow">About</p>
         <div class="mt-5 flex items-center gap-5">
           <Image
             src={avatar}
@@ -89,15 +85,11 @@ const certifications = [
             width={192}
             height={192}
             loading="eager"
-            class="size-20 rounded-full border border-[#17211d]/10 shadow-lg shadow-[#17211d]/10 sm:size-24 dark:border-white/10 dark:shadow-black/20"
+            class="size-20 rounded-full bg-white shadow-lg ring-4 shadow-brand-900/10 ring-white sm:size-24"
           />
           <div>
-            <h1
-              class="text-4xl leading-[1.12] font-semibold text-[#17211d] sm:text-5xl dark:text-white"
-            >
-              あんでぃ
-            </h1>
-            <p class="mt-2 text-sm text-[#17211d]/55 dark:text-white/55">
+            <h1 class="page-title">あんでぃ</h1>
+            <p class="mt-2 text-sm text-slate-500">
               Software Engineer / App Developer
             </p>
           </div>
@@ -109,7 +101,7 @@ const certifications = [
                 href={SOCIAL.HREF}
                 target="_blank"
                 rel="noreferrer"
-                class="rounded-md border border-[#17211d]/10 bg-white px-4 py-2.5 text-sm font-medium text-[#17211d]/70 transition-colors hover:border-[#1d6f5c]/35 hover:text-[#17211d] dark:border-white/10 dark:bg-white/5 dark:text-white/70 dark:hover:text-white"
+                class="btn btn-secondary"
               >
                 {SOCIAL.NAME}
               </a>
@@ -118,9 +110,7 @@ const certifications = [
         </div>
       </div>
 
-      <div
-        class="animate space-y-5 text-base leading-8 text-[#17211d]/70 dark:text-white/70"
-      >
+      <div class="animate space-y-5 text-base leading-8 text-slate-600">
         <p>
           はじめまして、あんでぃです。国内の IT
           企業で約20年、ソフトウェア開発に携わってきました。Java
@@ -141,29 +131,19 @@ const certifications = [
 
     <section class="mt-20">
       <div class="animate">
-        <p
-          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
-        >
-          Career
-        </p>
-        <h2 class="mt-3 text-3xl font-semibold text-[#17211d] dark:text-white">
-          これまでの経歴
-        </h2>
+        <p class="eyebrow">Career</p>
+        <h2 class="mt-4 text-3xl font-bold text-slate-800">これまでの経歴</h2>
       </div>
-      <ol class="mt-8 divide-y divide-[#17211d]/10 dark:divide-white/10">
+      <ol class="mt-8 divide-y divide-slate-200">
         {
           career.map((item) => (
             <li class="animate grid gap-2 py-6 sm:grid-cols-[10rem_1fr] sm:gap-8">
-              <p class="text-sm font-medium text-[#17211d]/50 tabular-nums dark:text-white/50">
+              <p class="text-sm font-medium text-slate-500 tabular-nums">
                 {item.period}
               </p>
               <div>
-                <h3 class="font-semibold text-[#17211d] dark:text-white">
-                  {item.title}
-                </h3>
-                <p class="mt-2 text-sm leading-7 text-[#17211d]/65 dark:text-white/65">
-                  {item.body}
-                </p>
+                <h3 class="font-bold text-slate-800">{item.title}</h3>
+                <p class="mt-2 text-sm leading-7 text-slate-600">{item.body}</p>
               </div>
             </li>
           ))
@@ -173,27 +153,19 @@ const certifications = [
 
     <section class="mt-20 grid gap-8 lg:grid-cols-[0.72fr_1fr] lg:items-start">
       <div class="animate">
-        <p
-          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
-        >
-          Skills
-        </p>
-        <h2 class="mt-3 text-3xl font-semibold text-[#17211d] dark:text-white">
-          使っている技術
-        </h2>
+        <p class="eyebrow">Skills</p>
+        <h2 class="mt-4 text-3xl font-bold text-slate-800">使っている技術</h2>
       </div>
       <dl class="grid gap-6">
         {
           skills.map((skill) => (
-            <div class="animate border-t border-[#17211d]/10 pt-5 dark:border-white/10">
-              <dt class="text-xs font-medium text-[#17211d]/45 uppercase dark:text-white/45">
+            <div class="animate border-t border-slate-200 pt-5">
+              <dt class="text-xs font-medium text-slate-500 uppercase">
                 {skill.category}
               </dt>
               <dd class="mt-3 flex flex-wrap gap-2">
                 {skill.items.map((item) => (
-                  <span class="rounded-md border border-[#17211d]/10 px-3 py-1.5 text-xs font-medium text-[#17211d]/65 dark:border-white/10 dark:text-white/65">
-                    {item}
-                  </span>
+                  <span class="chip">{item}</span>
                 ))}
               </dd>
             </div>
@@ -202,29 +174,19 @@ const certifications = [
       </dl>
     </section>
 
-    <section
-      class="mt-20 border-y border-[#17211d]/10 py-16 dark:border-white/10"
-    >
+    <section class="mt-20 border-y border-slate-200 py-16">
       <div class="animate">
-        <p
-          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
-        >
-          Values
-        </p>
-        <h2 class="mt-3 text-3xl font-semibold text-[#17211d] dark:text-white">
+        <p class="eyebrow">Values</p>
+        <h2 class="mt-4 text-3xl font-bold text-slate-800">
           開発で大切にしていること
         </h2>
       </div>
       <div class="mt-8 grid gap-6 md:grid-cols-3">
         {
           values.map((value) => (
-            <section class="animate border-t border-[#17211d]/10 pt-5 dark:border-white/10">
-              <h3 class="font-semibold text-[#17211d] dark:text-white">
-                {value.title}
-              </h3>
-              <p class="mt-3 text-sm leading-7 text-[#17211d]/65 dark:text-white/65">
-                {value.body}
-              </p>
+            <section class="animate border-t border-slate-200 pt-5">
+              <h3 class="font-bold text-slate-800">{value.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600">{value.body}</p>
             </section>
           ))
         }
@@ -233,48 +195,26 @@ const certifications = [
 
     <section class="mt-16 grid gap-10 lg:grid-cols-[0.72fr_1fr] lg:items-start">
       <div class="animate">
-        <p
-          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
-        >
-          Certifications
-        </p>
-        <h2 class="mt-3 text-2xl font-semibold text-[#17211d] dark:text-white">
-          資格
-        </h2>
-        <ul
-          class="mt-5 space-y-2 text-sm leading-7 text-[#17211d]/65 dark:text-white/65"
-        >
+        <p class="eyebrow">Certifications</p>
+        <h2 class="mt-4 text-2xl font-bold text-slate-800">資格</h2>
+        <ul class="mt-5 space-y-2 text-sm leading-7 text-slate-600">
           {certifications.map((certification) => <li>{certification}</li>)}
         </ul>
       </div>
 
       <div
-        class="animate rounded-lg border border-[#17211d]/10 bg-white p-6 dark:border-white/10 dark:bg-white/5"
+        class="animate rounded-3xl border border-brand-100 bg-linear-to-br from-brand-50 via-white to-white p-8"
       >
-        <p
-          class="text-sm font-medium text-[#1d6f5c] uppercase dark:text-[#69c4ad]"
-        >
-          Contact
-        </p>
-        <h2 class="mt-3 text-2xl font-semibold text-[#17211d] dark:text-white">
+        <p class="eyebrow">Contact</p>
+        <h2 class="mt-4 text-2xl font-bold text-slate-800">
           お気軽にご連絡ください
         </h2>
-        <p class="mt-4 leading-8 text-[#17211d]/65 dark:text-white/65">
+        <p class="mt-4 leading-8 text-slate-600">
           アプリへのご意見や、開発に関するご相談があれば、お問い合わせフォームからお送りください。
         </p>
         <div class="mt-7 flex flex-wrap gap-3">
-          <a
-            href="/projects"
-            class="rounded-md bg-[#17211d] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#1d6f5c] focus-visible:bg-[#1d6f5c] dark:bg-white dark:text-[#101412] dark:hover:bg-[#69c4ad]"
-          >
-            アプリを見る
-          </a>
-          <a
-            href="/contact"
-            class="rounded-md border border-[#17211d]/12 bg-white px-4 py-2.5 text-sm font-medium text-[#17211d] transition-colors hover:border-[#1d6f5c]/35 hover:text-[#1d6f5c] focus-visible:border-[#1d6f5c]/35 focus-visible:text-[#1d6f5c] dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:text-[#69c4ad] dark:focus-visible:text-[#69c4ad]"
-          >
-            お問い合わせ
-          </a>
+          <a href="/projects" class="btn btn-primary">アプリを見る</a>
+          <a href="/contact" class="btn btn-secondary">お問い合わせ</a>
         </div>
       </div>
     </section>
