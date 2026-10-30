@@ -20,21 +20,23 @@ import BackToTop from "@components/BackToTop.astro";
         </div>
         <div class="text-slate-500">Thoughtful apps for everyday routines.</div>
       </div>
-      <div class="flex flex-wrap items-center gap-2">
-        {
-          SOCIALS.map((SOCIAL) => (
-            <a
-              href={SOCIAL.HREF}
-              target="_blank"
-              rel="noreferrer"
-              class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-600 transition-colors hover:border-brand-300 hover:text-brand-700 focus-visible:border-brand-300 focus-visible:text-brand-700"
-              aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
-            >
-              {SOCIAL.NAME}
-            </a>
-          ))
-        }
-      </div>
+      {
+        SOCIALS.length > 0 && (
+          <div class="flex flex-wrap items-center gap-2">
+            {SOCIALS.map((SOCIAL) => (
+              <a
+                href={SOCIAL.HREF}
+                target="_blank"
+                rel="noreferrer"
+                class="rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-600 transition-colors hover:border-brand-300 hover:text-brand-700 focus-visible:border-brand-300 focus-visible:text-brand-700"
+                aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+              >
+                {SOCIAL.NAME}
+              </a>
+            ))}
+          </div>
+        )
+      }
     </div>
     <div class="mt-8 border-t border-slate-200/80 pt-6 text-xs text-slate-500">
       &copy; {new Date().getFullYear()}

@@ -34,12 +34,8 @@ export const SOCIALS: Socials = [
   //   NAME: "X (formerly Twitter)",
   //   HREF: "https://twitter.com/boogerbuttcheek",
   // },
-  {
-    NAME: "GitHub",
-    HREF: "https://github.com/kand417",
-  },
-  {
-    NAME: "Website",
-    HREF: "https://kand417.com/",
-  },
+  // {
+  //   NAME: "GitHub",
+  //   HREF: "https://github.com/kand417",
+  // },
 ];

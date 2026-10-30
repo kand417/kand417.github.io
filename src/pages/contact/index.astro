@@ -16,20 +16,22 @@ import { SOCIALS } from "@consts";
         <p class="mt-5 text-base leading-8 text-slate-600">
           ご質問、ご要望、フィードバックをお送りください。いただいた内容は、今後の改善や新しいアプリづくりの参考にします。
         </p>
-        <div class="mt-8 flex flex-wrap gap-2">
-          {
-            SOCIALS.map((SOCIAL) => (
-              <a
-                href={SOCIAL.HREF}
-                target="_blank"
-                rel="noreferrer"
-                class="btn btn-secondary"
-              >
-                {SOCIAL.NAME}
-              </a>
-            ))
-          }
-        </div>
+        {
+          SOCIALS.length > 0 && (
+            <div class="mt-8 flex flex-wrap gap-2">
+              {SOCIALS.map((SOCIAL) => (
+                <a
+                  href={SOCIAL.HREF}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="btn btn-secondary"
+                >
+                  {SOCIAL.NAME}
+                </a>
+              ))}
+            </div>
+          )
+        }
       </div>
 
       <div
