@@ -6,7 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://kand417.github.io",
+  site: "https://kand417.com",
   // Astro 7 defaults to "jsx", which drops spaces between inline elements
   compressHTML: true,
   integrations: [sitemap(), mdx(), pagefind()],
