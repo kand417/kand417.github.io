@@ -38,8 +38,4 @@ export const SOCIALS: Socials = [
   //   NAME: "GitHub",
   //   HREF: "https://github.com/kand417",
   // },
-  {
-    NAME: "Website",
-    HREF: "https://kand417.com/",
-  },
 ];
