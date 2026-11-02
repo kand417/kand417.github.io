@@ -1,11 +1,24 @@
-# Introducing [Astro Micro 🔬](https://astro-micro.vercel.app/)
+# あんでぃのポートフォリオ
 
-Astro Micro is an accessible theme for Astro. It's a fork of [Mark Horn's](https://github.com/markhorn-dev) popular theme [Astro Nano](https://astro-nano-demo.vercel.app/). Like Nano, Micro comes with zero frameworks installed.
+https://kand417.com/
 
-Micro adds features like [Pagefind](https://pagefind.app) for search, [Giscus](https://giscus.app) for comments, and more. For a full list of changes, see this [blog post](https://astro-micro.vercel.app/blog/00-micro-changelog).
+個人開発したアプリを紹介するポートフォリオサイトです。[Astro](https://astro.build/) で作り、GitHub Pages で公開しています。
 
-Micro still comes with everything great about Nano — full type safety, a sitemap, an RSS feed, and Markdown + MDX support. Styled with TailwindCSS and preconfigured with system, light, and dark themes.
+## 開発
 
----
+パッケージ管理には [pnpm](https://pnpm.io/) を使います。
 
-![astro-micro](https://github.com/user-attachments/assets/fc9b55b9-53e5-4933-9d23-936e1c61e6c2)
+```sh
+pnpm install     # 依存のインストール
+pnpm dev         # 開発サーバーの起動
+pnpm run build   # ビルド（astro check を含む）
+pnpm preview     # ビルド結果の確認
+```
+
+main ブランチに push すると、GitHub Actions でビルドして GitHub Pages にデプロイします。
+
+## ライセンス
+
+このリポジトリはオープンソースではありません。ブログ記事・プロフィール・画像などのコンテンツと、このリポジトリで加えた変更の著作権はあんでぃ（kand417）にあり、無断での転載や再利用は許可していません。
+
+サイトは、MIT License で公開されている Astro のテーマ [Astro Micro](https://github.com/trevortylerlee/astro-micro)（[Astro Nano](https://github.com/markhorn-dev/astro-nano) のフォーク）をもとにしています。Astro Micro と Astro Nano から引き継いだ部分は、それぞれの MIT License に従います。ライセンス文は [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) にあります。
