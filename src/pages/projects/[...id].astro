@@ -77,10 +77,10 @@ const metaItems = [
                 <a
                   href={project.data.demoURL}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener"
                   class="btn btn-primary"
                 >
-                  デモを見る
+                  {project.data.demoLabel ?? "デモを見る"}
                 </a>
               )}
               {project.data.repoURL && (
