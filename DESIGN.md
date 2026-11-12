@@ -160,6 +160,7 @@
 - **一覧のカード**（`ArrowCard.astro`）：アプリとブログ記事で共通。アプリはアイコンを表示する。マウスを乗せると少し浮き上がり、右の矢印が青い丸になる。
 - **設計方針のカード**：線のアイコンを `bg-brand-50` の下地に載せる。マウスを乗せると下地が `brand-600`、アイコンが白に変わる。
 - **お問い合わせカード**：`bg-linear-to-br from-brand-50 via-white to-white` のグラデーションに `border-brand-100` の枠線。ページの最後に置く。
+  - お問い合わせページ（`/contact`）では、このカードにメールアドレスを載せる。スパム対策のため、アドレスは HTML にそのまま書かず、`SITE.EMAIL` のユーザー名とドメインを `data-*` 属性に分けて持たせ、`astro:page-load` で組み立てて表示する。
 - **タグのリンク**：`rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-sm`。マウスを乗せると枠線と文字が青くなる。
 - **テキストリンク**：「すべて見る →」のように末尾に矢印を付け、`text-sm font-semibold text-brand-700` にする。
 - **記事内のリンク**：`text-brand-700` に、`brand-200` の太めの下線を引く。

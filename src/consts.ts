@@ -3,7 +3,8 @@ import type { Metadata, Site, Socials } from "@types";
 export const SITE: Site = {
   TITLE: "あんでぃ",
   DESCRIPTION: "個人開発アプリを紹介するポートフォリオサイトです。",
-  EMAIL: "",
+  // スパム対策として、完成したアドレスは HTML に書かず、ブラウザで組み立てて表示する
+  EMAIL: { USER: "contact", DOMAIN: "kand417.com" },
   NUM_POSTS_ON_HOMEPAGE: 5,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
 };
